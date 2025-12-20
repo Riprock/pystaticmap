@@ -1,0 +1,23 @@
+name: Lint
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - name: Install deps
+        run: |
+          pip install pylint
+
+      - name: Run pylint
+        run: |
+          pylint --max-line-length=240 .

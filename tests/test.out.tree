@@ -1,0 +1,146 @@
+Module(
+    body=[
+        FunctionDef(
+            name='main',
+            args=arguments(),
+            body=[
+                Expr(
+                    value=Call(
+                        func=Name(id='print', ctx=Load()),
+                        args=[
+                            Constant(value='Hello, World!')
+                        ]
+                    )
+                ),
+                Expr(
+                    value=Call(
+                        func=Name(id='print', ctx=Load()),
+                        args=[
+                            Call(
+                                func=Name(id='calculate_sum', ctx=Load()),
+                                args=[
+                                    Constant(value=2),
+                                    Constant(value=3)
+                                ]
+                            )
+                        ]
+                    )
+                ),
+                Assign(
+                    targets=[
+                        Name(id='someval', ctx=Store())
+                    ],
+                value=Constant(value=10)),
+                Assign(
+                    targets=[
+                        Name(id='otherval', ctx=Store())
+                    ],
+                    value=Constant(value='Number')
+                )
+            ]
+        ),
+
+        FunctionDef(
+            name='calculate_sum',
+            args=arguments(
+                args=[
+                arg(arg='a'),
+                arg(arg='b')]
+            ),
+            body=[
+                Return(
+                    value=BinOp(
+                        left=Name(id='a', ctx=Load()),
+                        op=Add(),
+                        right=Name(id='b', ctx=Load())
+                    )
+                )
+            ]
+        ),
+        FunctionDef(
+            name='greet',
+            args=arguments(
+                args=[
+                    arg(arg='name')
+                ]
+            ),
+            body=[
+                Return(
+                    value=JoinedStr(
+                        values=[
+                        Constant(value='Hello, '),
+                        FormattedValue(
+                            value=Name(id='name', ctx=Load()),
+                            conversion=-1),
+                        Constant(value='!')]
+                    )
+                )
+            ]
+        ),
+
+        If(
+            test=Compare(
+                left=Name(id='__name__', ctx=Load()),
+                ops=[
+                    Eq()
+                ],
+                comparators=[
+                    Constant(value='__main__')
+                ]
+            ),
+            body=[
+                Expr(
+                    value=Call(
+                        func=Name(id='main', ctx=Load())
+                    )
+                ),
+                Assign(
+                    targets=[
+                        Name(id='result', ctx=Store())
+                    ],
+                    value=Call(
+                        func=Name(id='calculate_sum', ctx=Load()),
+                        args=[
+                        Constant(value=5),
+                        Constant(value=7)]
+                    )
+                ),
+                Expr(
+                    value=Call(
+                        func=Name(id='print', ctx=Load()),
+                        args=[
+                            JoinedStr(
+                                values=[
+                                    Constant(value='The sum is: '),
+                                    FormattedValue(
+                                        value=Name(id='result', ctx=Load()),
+                                        conversion=-1
+                                    )
+                                ]
+                            )
+                        ]
+                    )
+                ),
+                Assign(
+                    targets=[
+                        Name(id='greeting', ctx=Store())
+                    ],
+                    value=Call(
+                        func=Name(id='greet', ctx=Load()),
+                        args=[
+                            Constant(value='Alice')
+                        ]
+                    )
+                ),
+                Expr(
+                    value=Call(
+                        func=Name(id='print', ctx=Load()),
+                        args=[
+                            Name(id='greeting', ctx=Load())
+                        ]
+                    )
+                )
+            ]
+        )
+    ]
+)
