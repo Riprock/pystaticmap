@@ -17,3 +17,7 @@ if __name__ == "__main__":
     greeting = greet("Alice")
     print(greeting)
 
+    
+print("AFTER IF STATEMENT")
+print("This is a test file for AST parsing.")
+# Did this for a reason, Wanted to ensure that the output from AST parsion was ordered by top to bottom just for confirmaation sake

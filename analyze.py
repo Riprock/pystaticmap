@@ -22,8 +22,31 @@ def node_iterator(nodes):
             print(len(node.body))
             print("END IF BODY")
             node_iterator(ast.iter_child_nodes(node))
+
+        elif isinstance(node, ast.Call):
+            print(f"Function Call: {ast.dump(node)}\n")
+            node_iterator(ast.iter_child_nodes(node))
+        
+        elif isinstance(node, ast.Assign):
+            print(f"Assignment: {ast.dump(node)}\n")
+            node_iterator(ast.iter_child_nodes(node))
+
+        elif isinstance(node, ast.Return):
+            print(f"Return Statement: {ast.dump(node)}\n")
+            node_iterator(ast.iter_child_nodes(node))
+
+        elif isinstance(node, ast.Compare):
+            print(f"Comparison: {ast.dump(node)}\n")
+            node_iterator(ast.iter_child_nodes(node))
+
+        elif isinstance(node, ast.arguments):
+            print(f"Arguments: {ast.dump(node)}\n")
+            node_iterator(ast.iter_child_nodes(node))
+
         else:
             print(f"NO Node type matched {type(node)}\n")
+
+
 call_tree = []
 with open("./tests/test.py", "r") as file:
     content = file.read()
