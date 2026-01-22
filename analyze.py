@@ -70,8 +70,8 @@ with open("./tests/test.py", "r") as file:
     <ast.FunctionDef object at 0x0000025FA67C5550>
     <ast.If object at 0x0000025FA67C4E10>
     """
-
-    node_iterator(ast.iter_child_nodes(root))
+    print(root)
+    #node_iterator(ast.iter_child_nodes(root))
 
 #print(master_data)
 #print("Call Tree")
